@@ -6,7 +6,7 @@ const AuthContext =React.createContext();
 
 export const useAuth =() =>useContext(AuthContext);
 export const AuthProvider=({children}) =>{
-    const {loading,setLoading } = useState(true);
+    const [loading,setLoading ] = useState(true);
     const [user,setUser] = useState(null);
     const history=useNavigate();
 
@@ -14,7 +14,7 @@ export const AuthProvider=({children}) =>{
         auth.onAuthStateChanged((user)=>{
             setUser(user);
             setLoading(false);
-            if(user)  history.push('/chats');
+            if(user)  history('/chats');
         })
      
     }, [user,history]);
